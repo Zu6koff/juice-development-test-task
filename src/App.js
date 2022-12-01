@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AppRoot, Epic, SplitCol, SplitLayout, Tabbar as VKTabbar, TabbarItem, View } from '@vkontakte/vkui';
-import { Profile } from 'src/pages';
+import { Friends, Profile } from 'src/pages';
+
+import { Icon28NewsfeedLinesOutline, Icon28UserSquareOutline } from '@vkontakte/icons';
 
 import './App.css';
-import { Icon28NewsfeedLinesOutline, Icon28UserSquareOutline } from '@vkontakte/icons';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                     <Epic activeStory={'profile'} tabbar={<Tabbar/>}>
                         <View id={'profile'} activePanel={'profile'}>
                             <Profile id={'profile'}/>
+                            <Friends id={'friends'}/>
                         </View>
                     </Epic>
                 </SplitCol>

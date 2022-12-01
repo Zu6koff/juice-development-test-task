@@ -23,7 +23,7 @@ const AppStructure = () => {
 
     return (
         <ConfigProvider>
-            <AdaptivityProvider sizeX={'regular'}>
+            <AdaptivityProvider>
                 <StoreProvider store={store}>
                     <App/>
                 </StoreProvider>
