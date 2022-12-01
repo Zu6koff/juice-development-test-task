@@ -1,17 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
+import { Observer } from 'mobx-react-lite';
 import { FriendsList } from 'src/components';
 
-import { FRIENDS } from 'src/utils/mocks';
+import { useStore } from 'src/hooks';
 
 const Friends = ({id, goBack}) => {
-    const [friends, setFriends] = useState([]);
-
-    useEffect(() => console.log('FriendsPanel render'));
-
-    useEffect(() => {
-        setFriends([...FRIENDS]);
-    }, []);
+    const {user} = useStore();
 
     return (
         <Panel id={id}>
@@ -19,7 +14,11 @@ const Friends = ({id, goBack}) => {
                 Друзья
             </PanelHeader>
             <Group>
-                <FriendsList friends={friends}/>
+                <Observer>
+                    {
+                        () => <FriendsList friends={user.friends}/>
+                    }
+                </Observer>
             </Group>
         </Panel>
     );

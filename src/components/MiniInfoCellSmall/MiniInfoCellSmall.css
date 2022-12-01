@@ -1,21 +1,26 @@
-.MiniInfoCell16 {
+.MiniInfoCellSmall {
     display: flex;
     align-items: center;
     gap: 6px;
+    max-width: 100%;
+    overflow: hidden;
 }
 
-.MiniInfoCell16__Icon {
+.MiniInfoCellSmall__Icon {
     color: var(--icon_secondary);
 }
 
-.MiniInfoCell16__Label {
+.MiniInfoCellSmall__Label {
     color: var(--text_secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.MiniInfoCell16__Icon.Button {
+.MiniInfoCellSmall__Icon.Button {
     color: var(--accent);
 }
 
-.MiniInfoCell16__Label.Button {
+.MiniInfoCellSmall__Label.Button {
     color: var(--accent);
 }

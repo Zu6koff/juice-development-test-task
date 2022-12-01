@@ -1,16 +1,16 @@
 import React from 'react';
 import { Caption } from '@vkontakte/vkui';
 
-import 'src/components/MiniInfoCellSmall/MiniInfoCellSmall.css';
+import './MiniInfoCellSmall.css';
 
-const MiniInfoCellSmall = ({icon, children, mode = 'default'}) => {
+const MiniInfoCellSmall = ({Component = 'div', icon, children, mode = 'default', ...props}) => {
     const isButton = mode === 'button';
 
     return (
-        <div className={'MiniInfoCell16'}>
-            <span className={`MiniInfoCell16__Icon ${isButton ? 'Button' : ''}`}>{icon}</span>
-            <Caption className={`MiniInfoCell16__Label ${isButton ? 'Button' : ''}`} level={'1'}>{children}</Caption>
-        </div>
+        <Component className={'MiniInfoCellSmall'} {...props}>
+            <span className={`MiniInfoCellSmall__Icon ${isButton ? 'Button' : ''}`}>{icon}</span>
+            <Caption className={`MiniInfoCellSmall__Label ${isButton ? 'Button' : ''}`} level={'1'}>{children}</Caption>
+        </Component>
     );
 };
 

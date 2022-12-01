@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Button, Group, Panel, PanelHeader, Placeholder } from '@vkontakte/vkui';
 
 import { IllustrationTongue, LogoVKUI } from 'src/assets';
 
 const PlaceholderPanel = ({id, openModal}) => {
-    useEffect(() => console.log('PlaceholderPanel render'));
-
     return (
         <Panel id={id}>
             <PanelHeader shadow={false} separator={false}>
@@ -13,17 +11,17 @@ const PlaceholderPanel = ({id, openModal}) => {
             </PanelHeader>
             <Group>
                 <Placeholder
-                    icon={<img src={IllustrationTongue} alt={'illustration'}/>}
+                    stretched
                     title={'Немного лирики'}
+                    icon={<img src={IllustrationTongue} alt={'illustration'}/>}
                     action={
                         <Button size={'m'} onClick={openModal} data-modal={'example'}>
                             Нажми на меня
                         </Button>
                     }
-                    stretched
                 >
                     Прежде чем описание станет хорошим, его необходимо написать.
-                    Не правда ли?
+                    Не правда ли?
                 </Placeholder>
             </Group>
         </Panel>

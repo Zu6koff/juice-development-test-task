@@ -9,12 +9,15 @@ import '@vkontakte/vkui/dist/fonts.css';
 import { StoreProvider } from 'src/components';
 import UserStore from 'src/stores/UserStore';
 import bridge from '@vkontakte/vk-bridge';
+import AppConfigStore from 'src/stores/AppConfigStore';
+import { observer } from 'mobx-react-lite';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const AppStructure = () => {
+const AppStructure = observer(() => {
     const store = useMemo(() => ({
         user: new UserStore(),
+        appConfig: new AppConfigStore(),
     }), []);
 
     useEffect(() => {
@@ -22,18 +25,14 @@ const AppStructure = () => {
     }, []);
 
     return (
-        <ConfigProvider>
-            <AdaptivityProvider>
-                <StoreProvider store={store}>
+        <StoreProvider store={store}>
+            <ConfigProvider appearance={store.appConfig.appearance}>
+                <AdaptivityProvider>
                     <App/>
-                </StoreProvider>
-            </AdaptivityProvider>
-        </ConfigProvider>
+                </AdaptivityProvider>
+            </ConfigProvider>
+        </StoreProvider>
     );
-};
+});
 
-root.render(
-    <React.StrictMode>
-        <AppStructure/>
-    </React.StrictMode>,
-);
+root.render(<AppStructure/>);

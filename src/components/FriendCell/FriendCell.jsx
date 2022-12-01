@@ -12,6 +12,8 @@ const FriendCell = ({friend, ...props}) => {
                     {getInitials(friend.name)}
                 </InitialsAvatar>
             }
+            disabled
+            {...props}
         >
             {friend.name}
         </SimpleCell>

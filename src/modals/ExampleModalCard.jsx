@@ -52,4 +52,4 @@ const ExampleModalCard = ({id, onClose}) => {
     );
 };
 
-export default ExampleModalCard;
+export default React.memo(ExampleModalCard);

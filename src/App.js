@@ -4,20 +4,22 @@ import { Friends, PlaceholderPanel as Placeholder, Profile } from 'src/panels';
 import Modal from 'src/modals/Modal';
 
 import { Icon28NewsfeedLinesOutline, Icon28UserSquareOutline } from '@vkontakte/icons';
-
-import './App.css';
 import { useModal, useNavigation } from 'src/hooks';
 
+import './App.css';
+
 const App = () => {
-    const {activeView, activePanel, go, goBack} = useNavigation('profile');
+    const {activeView, activePanel, go, goBack, history} = useNavigation('profile');
     const {activeModal, openModal, closeModal} = useModal();
 
     return (
         <AppRoot>
-            <SplitLayout modal={<Modal activeModal={activeModal} closeModal={closeModal}/>}>
+            <SplitLayout
+                modal={<Modal activeModal={activeModal} closeModal={closeModal}/>}
+            >
                 <SplitCol animate>
                     <Epic activeStory={activeView} tabbar={<Tabbar go={go} activeView={activeView}/>}>
-                        <View id={'profile'} activePanel={activePanel}>
+                        <View id={'profile'} activePanel={activePanel} history={history} onSwipeBack={goBack}>
                             <Profile id={'profile'} go={go}/>
                             <Friends id={'friends'} goBack={goBack}/>
                         </View>

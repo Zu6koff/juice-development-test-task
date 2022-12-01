@@ -24,5 +24,5 @@ export const useNavigation = (initialPage) => {
         setActivePage(newHistory[newHistory.length - 1]);
     }, []);
 
-    return {activeView, activePanel, go, goBack};
+    return {activeView, activePanel, go, goBack, history: history.current};
 };

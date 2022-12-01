@@ -4,20 +4,25 @@ import MiniInfoCellSmall from 'src/components/MiniInfoCellSmall/MiniInfoCellSmal
 
 import { Icon20HomeOutline, Icon20UserOutline } from '@vkontakte/icons';
 
-import { observer } from 'mobx-react-lite';
-
 import './UserInfo.css';
 
-const UserInfo = ({user}) => {
+const UserInfo = ({full_name, photo_url, city, id}) => {
     return (
         <div className={'UserInfo'}>
-            <Avatar size={88} src={user.photo}/>
-            <Title className={'UserInfo__FullName'} level={'3'} weight={'2'}>{user.full_name}</Title>
+            <Avatar size={88} src={photo_url}/>
+            <Title className={'UserInfo__FullName'} level={'3'} weight={'2'}>{full_name}</Title>
             <div className={'UserInfo__InfoCells'}>
                 <MiniInfoCellSmall icon={<Icon20HomeOutline/>}>
-                    {user.city || 'Не указан'}
+                    {city || 'Не указан'}
                 </MiniInfoCellSmall>
-                <MiniInfoCellSmall icon={<Icon20UserOutline/>} mode={'button'}>
+                <MiniInfoCellSmall
+                    icon={<Icon20UserOutline/>}
+                    mode={'button'}
+                    Component={'a'}
+                    href={`https://vk.com/id${id}`}
+                    target={'_blank'}
+                    rel={'noreferrer'}
+                >
                     Открыть профиль
                 </MiniInfoCellSmall>
             </div>
@@ -25,4 +30,4 @@ const UserInfo = ({user}) => {
     );
 };
 
-export default observer(UserInfo);
+export default UserInfo;

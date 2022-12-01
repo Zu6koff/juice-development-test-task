@@ -11,3 +11,7 @@
 .panel-backgroundPage {
   background-color: var(--background_page);
 }
+
+a {
+  text-decoration: none;
+}

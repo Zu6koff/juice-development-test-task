@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
 
-    padding: 12px;
+    padding: 4px;
 }
 
 .UserInfo__FullName {
@@ -20,6 +20,7 @@
 }
 
 .UserInfo__InfoCells {
+    max-width: 100%;
     margin-top: 6px;
     display: flex;
     align-items: center;
