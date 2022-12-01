@@ -7,7 +7,7 @@ import {
     Icon56Stars3Outline,
 } from '@vkontakte/icons';
 
-const ExampleModalCard = ({id}) => {
+const ExampleModalCard = ({id, onClose}) => {
     const items = [
         {
             label: 'Number one',
@@ -32,7 +32,7 @@ const ExampleModalCard = ({id}) => {
             header={'Это модальное окно'}
             subheader={'Короткое описание, а может и не короткое'}
             icon={<Icon56Stars3Outline/>}
-            actions={<Button size={'l'}>Понятно</Button>}
+            actions={<Button size={'l'} onClick={onClose}>Понятно</Button>}
         >
             <div className={'modalCard__noSpacedContent'}>
                 {
@@ -41,6 +41,7 @@ const ExampleModalCard = ({id}) => {
                             key={item.label}
                             subtitle={item.subtitle}
                             before={item.before}
+                            disabled
                         >
                             {item.label}
                         </SimpleCell>

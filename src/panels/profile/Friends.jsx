@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { Group, Panel, PanelHeader, PanelHeaderBack, Placeholder } from '@vkontakte/vkui';
-import { FriendCell } from 'src/components';
+import { Group, Panel, PanelHeader, PanelHeaderBack } from '@vkontakte/vkui';
+import { FriendsList } from 'src/components';
 
 import { FRIENDS } from 'src/utils/mocks';
 
-const Friends = ({id}) => {
+const Friends = ({id, goBack}) => {
     const [friends, setFriends] = useState([]);
+
+    useEffect(() => console.log('FriendsPanel render'));
 
     useEffect(() => {
         setFriends([...FRIENDS]);
     }, []);
+
     return (
         <Panel id={id}>
-            <PanelHeader before={<PanelHeaderBack/>}>
+            <PanelHeader before={<PanelHeaderBack onClick={goBack}/>}>
                 Друзья
             </PanelHeader>
             <Group>
-                {
-                    !friends?.length
-                        ? <Placeholder>Вы не добавили ни одного друга</Placeholder>
-                        : friends.map(friend => <FriendCell key={friend.id} friend={friend}/>)
-                }
+                <FriendsList friends={friends}/>
             </Group>
         </Panel>
     );
 };
 
-export default Friends;
+export default React.memo(Friends);

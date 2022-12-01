@@ -7,3 +7,7 @@
   margin-left: -16px;
   margin-top: 18px;
 }
+
+.panel-backgroundPage {
+  background-color: var(--background_page);
+}

@@ -6,19 +6,23 @@ import Modal from 'src/modals/Modal';
 import { Icon28NewsfeedLinesOutline, Icon28UserSquareOutline } from '@vkontakte/icons';
 
 import './App.css';
+import { useModal, useNavigation } from 'src/hooks';
 
 const App = () => {
+    const {activeView, activePanel, go, goBack} = useNavigation('profile');
+    const {activeModal, openModal, closeModal} = useModal();
+
     return (
         <AppRoot>
-            <SplitLayout modal={<Modal/>}>
-                <SplitCol>
-                    <Epic activeStory={'profile'} tabbar={<Tabbar/>}>
-                        <View id={'profile'} activePanel={'profile'}>
-                            <Profile id={'profile'}/>
-                            <Friends id={'friends'}/>
+            <SplitLayout modal={<Modal activeModal={activeModal} closeModal={closeModal}/>}>
+                <SplitCol animate>
+                    <Epic activeStory={activeView} tabbar={<Tabbar go={go} activeView={activeView}/>}>
+                        <View id={'profile'} activePanel={activePanel}>
+                            <Profile id={'profile'} go={go}/>
+                            <Friends id={'friends'} goBack={goBack}/>
                         </View>
-                        <View id={'placeholder'} activePanel={'placeholder'}>
-                            <Placeholder id={'placeholder'}/>
+                        <View id={'placeholder'} activePanel={activePanel}>
+                            <Placeholder id={'placeholder'} openModal={openModal}/>
                         </View>
                     </Epic>
                 </SplitCol>
@@ -27,15 +31,22 @@ const App = () => {
     );
 };
 
-const Tabbar = () => {
+const Tabbar = ({go, activeView}) => {
     return (
         <VKTabbar>
             <TabbarItem
+                onClick={go}
+                data-page={'placeholder'}
+                selected={activeView === 'placeholder'}
+                disabled={activeView === 'placeholder'}
                 indicator={<Icon28NewsfeedLinesOutline/>}
                 text={'Placeholder'}
             />
             <TabbarItem
-                selected
+                onClick={go}
+                data-page={'profile'}
+                selected={activeView === 'profile'}
+                disabled={activeView === 'profile'}
                 indicator={<Icon28UserSquareOutline/>}
                 text={'Профиль'}
             />

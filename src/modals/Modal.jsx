@@ -3,10 +3,10 @@ import { ModalRoot } from '@vkontakte/vkui';
 
 import ExampleModalCard from './ExampleModalCard';
 
-const Modal = () => {
+const Modal = ({activeModal, closeModal}) => {
     return (
-        <ModalRoot activeModal={null}>
-            <ExampleModalCard id={'example'}/>
+        <ModalRoot activeModal={activeModal} onClose={closeModal}>
+            <ExampleModalCard id={'example'} onClose={closeModal}/>
         </ModalRoot>
     );
 };

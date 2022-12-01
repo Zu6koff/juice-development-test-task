@@ -1,9 +1,9 @@
 import React from 'react';
 import { Caption } from '@vkontakte/vkui';
 
-import './MiniInfoCell16.css';
+import 'src/components/MiniInfoCellSmall/MiniInfoCellSmall.css';
 
-const MiniInfoCell16 = ({icon, children, mode = 'default'}) => {
+const MiniInfoCellSmall = ({icon, children, mode = 'default'}) => {
     const isButton = mode === 'button';
 
     return (
@@ -14,4 +14,4 @@ const MiniInfoCell16 = ({icon, children, mode = 'default'}) => {
     );
 };
 
-export default MiniInfoCell16;
+export default MiniInfoCellSmall;

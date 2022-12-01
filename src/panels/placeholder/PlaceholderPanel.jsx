@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Group, Panel, PanelHeader, Placeholder } from '@vkontakte/vkui';
 
 import { IllustrationTongue, LogoVKUI } from 'src/assets';
 
-const PlaceholderPanel = ({id}) => {
+const PlaceholderPanel = ({id, openModal}) => {
+    useEffect(() => console.log('PlaceholderPanel render'));
+
     return (
         <Panel id={id}>
             <PanelHeader shadow={false} separator={false}>
@@ -13,10 +15,14 @@ const PlaceholderPanel = ({id}) => {
                 <Placeholder
                     icon={<img src={IllustrationTongue} alt={'illustration'}/>}
                     title={'Немного лирики'}
-                    action={<Button size={'m'}>Нажми на меня</Button>}
+                    action={
+                        <Button size={'m'} onClick={openModal} data-modal={'example'}>
+                            Нажми на меня
+                        </Button>
+                    }
                     stretched
                 >
-                    Прежде чем описание станет хорошим, его необходимо написать.
+                    Прежде чем описание станет хорошим, его необходимо написать.
                     Не правда ли?
                 </Placeholder>
             </Group>
@@ -24,4 +30,4 @@ const PlaceholderPanel = ({id}) => {
     );
 };
 
-export default PlaceholderPanel;
+export default React.memo(PlaceholderPanel);
