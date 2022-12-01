@@ -1,6 +1,7 @@
 {
   "name": "jucie-development-test-task",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@vkontakte/icons": "^1.208.0",
@@ -14,8 +15,9 @@
   },
   "scripts": {
     "start": "HTTPS=true react-scripts start",
-    "build": "react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "tunnel": "vk-tunnel --insecure=1 --http-protocol=https --ws-protocol=wss --host=0.0.0.0 --port=3000",
+    "deploy": "vk-miniapps-deploy"
   },
   "eslintConfig": {
     "extends": [
