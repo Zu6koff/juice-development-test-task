@@ -1,6 +1,6 @@
 import React from 'react';
 import { AppRoot, Epic, SplitCol, SplitLayout, Tabbar as VKTabbar, TabbarItem, View } from '@vkontakte/vkui';
-import { Friends, Profile } from 'src/pages';
+import { Friends, PlaceholderPanel as Placeholder, Profile } from 'src/panels';
 
 import { Icon28NewsfeedLinesOutline, Icon28UserSquareOutline } from '@vkontakte/icons';
 
@@ -11,10 +11,13 @@ const App = () => {
         <AppRoot>
             <SplitLayout>
                 <SplitCol>
-                    <Epic activeStory={'profile'} tabbar={<Tabbar/>}>
+                    <Epic activeStory={'placeholder'} tabbar={<Tabbar/>}>
                         <View id={'profile'} activePanel={'profile'}>
                             <Profile id={'profile'}/>
                             <Friends id={'friends'}/>
+                        </View>
+                        <View id={'placeholder'} activePanel={'placeholder'}>
+                            <Placeholder id={'placeholder'}/>
                         </View>
                     </Epic>
                 </SplitCol>
