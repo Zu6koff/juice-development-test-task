@@ -1,0 +1,27 @@
+.UserInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px;
+}
+
+.UserInfo__FullName {
+    font-size: 18px !important;
+    margin-top: 12px !important;
+
+    max-width: 100%;
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+.UserInfo__InfoCells {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

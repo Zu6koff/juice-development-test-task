@@ -1,0 +1,21 @@
+.MiniInfoCell16 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.MiniInfoCell16__Icon {
+    color: var(--icon_secondary);
+}
+
+.MiniInfoCell16__Label {
+    color: var(--text_secondary);
+}
+
+.MiniInfoCell16__Icon.Button {
+    color: var(--accent);
+}
+
+.MiniInfoCell16__Label.Button {
+    color: var(--accent);
+}
