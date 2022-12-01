@@ -1,3 +1,9 @@
 .PanelHeader__in__Logo {
   margin-bottom: -4px;
 }
+
+.modalCard__noSpacedContent {
+  margin-right: -16px;
+  margin-left: -16px;
+  margin-top: 18px;
+}
